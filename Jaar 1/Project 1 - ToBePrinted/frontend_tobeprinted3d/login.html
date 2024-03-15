@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Be Printed</title>
+    <link rel="icon" type="image/x-icon" href="/frontend_tobeprinted3d\assets\logo_TBD.png">
+    <link rel="stylesheet" href="./style/layout.css" />
+    <script src="./dist/defaultContent.js" type="module" defer></script>
+    <script src="./dist/login.js" defer></script>
+</head>
+
+<body>
+     <header></header>
+
+    <main class="center">
+        <section>
+            <h1>Login</h1>
+            <form id="loginForm">
+                <section class="formSections">
+                    <section>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" required />
+                    </section>
+                    <section>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required />
+                    </section>
+                </section>
+                <p class="noError" id="incorrectLogin">Please enter your correct username and password combination</p>
+                <button type="submit" id="submitLoginButton">Login</button>
+                <section class="accountProblems">
+                    <a href="./createaccount.html">No account? Sign up!</a>
+                    <a href="./passwordForget.html">Forgot password?</a>
+                </section>
+            </form>
+        </section>
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>

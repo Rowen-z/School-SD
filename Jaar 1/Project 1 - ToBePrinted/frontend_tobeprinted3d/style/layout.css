@@ -1,0 +1,770 @@
+/* Global Styling */
+
+*,
+html {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    max-width: 100vw;
+    padding: 0%;
+    margin: 0%;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus-visible, textarea:focus-visible {
+    outline: none;
+}
+
+.center {
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+/* Header Styling */
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    padding: 0.3% 2%;
+    max-height: 4rem;
+    background-color: #21d49a;
+    z-index: 3;
+}
+
+header section {
+    display: flex;
+}
+
+header #home a{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+header #home a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+header #createIcon {
+    max-height: 2rem;
+    max-width: 2rem;
+}
+
+header #logo img {
+    max-width: 2.5rem;
+    max-height: 2.5rem;
+    border-radius: 0.5rem;
+}
+
+#searchBar {
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    position: relative;
+    padding: 0 1rem;
+}
+
+header #searchBar input {
+    width: 100%;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.7rem;
+}
+
+header #searchBar input::placeholder {
+    color: #333;
+    opacity: 0.7;
+}
+
+header #searchBar #search {
+    position: absolute;
+    top: 0.6rem;
+    right: 1.3rem;
+    color: #333;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+header #searchBar #search:hover img {
+    filter: invert(39%) sepia(93%) saturate(1809%) hue-rotate(89deg) brightness(101%) contrast(92%);
+    opacity: 0.7;
+}
+
+header #account {
+    align-items: center;
+    column-gap: 1rem;
+}
+
+header #account a {
+    color: #333;
+    font-weight: bolder;
+    padding: 0.5rem;
+    position: relative;
+}
+
+header #account a:hover {
+    color: #fff;
+}
+
+header #account a:hover i {
+    color: #fff
+}
+
+header #account a img{
+    position: absolute;
+    left: -0.8rem;
+}
+
+header #account a:hover img{
+    filter: brightness(0) invert(1);
+}
+
+header #account #loggedIn {
+    column-gap: 1.5rem;
+}
+
+header #account #loggedIn #profile p {
+    margin: 0;
+    display: contents;
+}
+
+/* Main & Wrapper */
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh;
+    padding: 2% 3%;
+}
+
+.wrapper {
+    width: 80%;
+    background-color: #eee;
+}
+
+/* Call to action */
+
+h1.projectInformation {
+    font-size: 3rem;
+}
+
+.callToAction {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #ddd;
+    width: 98vw;
+}
+
+.callToAction img {
+    width: 45%;
+    aspect-ratio: 5/1;
+}
+
+.projectInformation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    row-gap: 1em;
+    width: 45%;
+}
+
+section.bigCounter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p.bigCounter {
+    font-size: 2.5rem;
+}
+
+.goalProgress {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.goalProgress progress {
+    width: 90%;
+}
+
+.projectInformation button {
+    width: 60%;
+    aspect-ratio: 5/1;
+}
+
+/* Slider */
+
+figure.sliderItem {
+    position: relative;
+    aspect-ratio: 9 / 13;
+}
+
+.sliderItem p {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sliderItem img {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+/* Footer styling */
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #21d49a;
+    padding: 1% 2%;
+}
+
+footer a {
+    color: #333;
+    font-weight: bolder;
+    padding: 0.5rem;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+/* Error message */
+.succes {
+    color:black;
+    display: inline-block
+}
+
+.error {
+    color: red;
+    display: inline-block;
+}
+
+/* Terms and conditions */
+
+.termsandconditions {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    list-style-type: circle;
+}
+
+.termsandconditions li {
+    margin-left: 2rem;
+}
+
+/* FAQ */
+
+.schema-faq {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    width: 30%;
+    margin-top: 1rem;
+}
+
+.schema-faq details {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 2rem 3rem;
+}
+
+.schema-faq summary {
+    font-weight: bold;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+}
+
+.schema-faq details[open] {
+    padding: -.5em;
+}
+
+/* Form styling */
+form {
+    display: inline-block;
+}
+
+.formSections {
+    display: flex;
+    flex-direction: column;
+}
+
+.accountProblems {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+section:has(#loginForm) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contactSection, #projectSection {
+    width: 30%;
+    margin-top: 2rem;
+}
+
+#contactForm, #projectForm, #loginForm, #profilepageBody, #editAccountOutput {
+    padding: 2rem 3rem;
+    background:rgba(33, 212, 154, 0.5);
+    width: 100%;
+}
+
+#contactForm label, #projectForm label, #loginForm label {
+    font-weight: bolder;
+    color: #333;
+}
+
+#contactForm input, #contactForm textarea, #contactForm select, #projectForm input, #projectForm textarea, #loginForm input, #loginForm textarea, #editAccountOutput input {
+    padding: 0.5rem 0.3rem;
+    border-radius: 0.3rem;
+    margin: 0.5rem 0rem 1rem;
+    border: none;
+}
+
+#contactForm option,#contactForm select:active{
+    color: #8e8e8e
+}
+
+#contactForm button, #projectForm button, #loginForm button, #editButton, #updateButton {
+    background: rgb(10 10 10 / 30%);
+    color: #fff;
+    border-color: #333;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+#contactForm button:hover, #projectForm button:hover, #loginForm button:hover, #editButton:hover {
+   background: rgba(197, 214, 196, 0.342);
+    color: #fff;
+    border-color: #333;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#popUpBackground, #popUp {
+        position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    transition: 0ms;
+}
+
+#popUpBackground {
+    height: 120vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.59);
+    z-index: 5;
+
+}
+
+#popUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    aspect-ratio: 2/1;
+    border-radius: 3em;
+    background-color: #7ca;
+    z-index: 6;
+}
+
+#incorrectLogin.error {
+    visibility: visible;
+}
+
+#incorrectLogin.noError {
+    visibility: hidden;
+}
+
+/* Overview of Campaigns */
+
+.project {
+    background: #ddd;
+    min-height: 15rem;
+    width: 60%;
+    margin: 2rem 0rem;
+    display: flex;
+}
+.project img {
+    width: 20rem;
+}
+
+.projectInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+}
+.projectInfo h2, .projectInfo h3 {
+    margin: 0;
+}
+
+.projectAuthorTime {
+    display: flex;
+    justify-content: space-around;
+}
+
+.projectDescription {
+    font-size: 0.8rem;
+    background: #cfcfcf;
+    padding: 0.5rem;
+    margin: 1rem 0rem;
+}
+.projectDescription p {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.projectGoal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.projectGoal progress {
+    width: 90%;
+    margin: 0rem 1rem;
+    height: 2rem;
+}
+
+/* Campaign Info */
+
+.campaignInfo {
+    display: flex;
+    background: #ddd;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.campaignInfo img {
+    width: 100%;
+    padding: 1rem;
+    object-fit: contain;
+}
+
+.campaignInfo .projectTitle {
+    background:#cfcfcf;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.campaignInfo .projectStats {
+    margin: 1rem 0;
+}
+.campaignInfo .projectStats p {
+    margin: 0;
+    width: fit-content;
+    background: #cfcfcf;
+    padding: 0.5rem 3.5rem;
+    border-radius: 1rem;
+    float:left;    
+}
+
+.campaignInfo .projectDescription {
+    margin: 1rem 0;
+}
+
+.campaignInfo .timeLeft {
+    text-align: center;
+    background: #cfcfcf;
+    margin: 1rem 0;
+}
+
+.campaignInfo .projectTimer {
+    text-align: center;
+    background: #cfcfcf;
+    margin: 1rem 0;
+}
+.campaignInfo .projectTimer p {
+    margin: 0;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+.campaignInfo .projectGoal {
+    margin: 1rem 0;
+}
+.campaignInfo .projectGoal p{
+    padding: 1rem;
+    background: #cfcfcf;
+}
+
+.campaignInfo .projectDonate {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+.campaignInfo .projectDonate button {
+    padding: 2rem 5rem;
+    border-radius: 1rem;
+    border-width: 1px;
+}
+
+.parentSection {
+    display: flex;
+}
+
+.leftSection {
+    padding: 1rem;
+    width: 50%;
+}
+.leftSection .buttonSection {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.leftSection .buttonSection button {
+    margin: 0;
+    padding: 1rem 10%;
+    font-size: 1rem;
+}
+.leftSection .campaignDesc {
+    width: 100%;
+}
+
+.rightSection {
+    padding: 1rem;
+    width: 50%;
+    display: flex;
+    column-gap: 2rem;
+}
+.rightSection h3 {
+    margin: 0;
+}
+.rightSection .firstSection {
+    width: 50%;
+}
+.rightSection .topDonators, .rightSection .donateNow {
+    background: #ddd;
+    padding: 1rem;
+}
+.rightSection .rankNameUser {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+}
+.rightSection .rankNameUser h4{
+    margin: 0;
+}
+.rightSection .rankNameUser p{
+    margin: 0;
+    padding: 0.3rem 0rem;
+}
+.rightSection .rankNameUser p:nth-child(even){
+    background: #cfcfcf;
+}
+.rightSection #rank {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+.rightSection #name {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.rightSection #amount {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.rightSection .donateNow {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.rightSection .donateNow #numberTest {
+    margin: 1rem 0;
+    padding: 0.2rem 0.3rem;
+}
+.rightSection .donateNow button {
+    padding: 1rem;
+    margin: auto;
+}
+
+.rightSection .recentDonators {
+    width: 50%;
+    background: #ddd;
+    padding: 1rem;
+    max-height: 600px;
+}
+.rightSection .recentDonators #name {
+    width: 70%;
+}
+
+/* CSS for screens smaller than 960px */
+@media (max-width:960px) {
+    .campaignInfo {
+        flex-direction: column;
+    }
+    .rightSection {
+        flex-direction: column;
+    }
+    .rightSection .firstSection, .rightSection .recentDonators {
+        width: 100%;
+    }
+    .rightSection .donateNow {
+        margin-bottom: 1rem;
+    }
+}
+
+table * {
+            
+    border: 1px solid #000;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+section:has(table) {
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    overflow-x: auto;
+}
+
+td img {
+    width: 2em;
+    aspect-ratio: 1;
+    border-radius: .4em;
+}
+td {
+    white-space: nowrap;
+    text-align: center;
+    padding: .3em;
+}
+.bannedUser {
+    color: red;
+}
+
+.description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.descriptionsection {
+    text-align: justify;
+    background-color: #cfcfcf;
+}
+
+.projecttitle {
+    background: #cfcfcf;
+    text-align: left;
+    padding-left: 10px;
+}
+
+#projects {
+    display: flex;
+    align-items: center;
+}
+
+.readmore {
+    text-align: right;
+    margin-right: 20px;
+    padding-bottom: 5px;
+}
+
+.emptybar {
+    width: 60%;
+    border-radius: 10px;
+    background: #cfcfcf;
+}
+
+.filledbar {
+    border-radius: 10px;
+    background: rgba(33, 212, 154, 0.5);
+    width: 70%;
+}
+
+.goal,
+.raised {
+    width: 20%;
+}
+
+.counter,
+.creator {
+    width: 50%;
+}
+
+.content {
+    border-radius: 10px;
+    background: #cfcfcf;
+    width: fit-content;
+    margin: auto;
+    padding: 0px 10px;
+}
+
+.projectpanel {
+    background-color: rgb(232, 232, 232);
+    flex-direction: row;
+    display: flex;
+    width: 80%;
+    margin:15px;
+}
+
+.addmargin {
+    margin: 10px;
+}
+
+.picturesection {
+    width: 25%;
+    border-style: dotted;
+    margin: 10px;
+}
+
+.creatorcountersection {
+    flex-direction: row;
+    display: flex;
+}
+
+.detailsection {
+    text-align: center;
+    width: 75%;
+}
+
+.progresssection {
+    flex-direction: row;
+    display: flex;
+}

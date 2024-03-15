@@ -1,0 +1,25 @@
+{
+  "name": "backend_tobeprinted3d-1",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "./dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.fdmci.hva.nl/ad-software-development-2223/semester-1-101/tbd/backend_tobeprinted3d.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.15",
+    "typescript": "^4.9.4"
+  }
+}

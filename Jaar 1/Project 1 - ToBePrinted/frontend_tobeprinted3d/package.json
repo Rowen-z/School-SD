@@ -1,0 +1,16 @@
+{
+  "name": "frontend_tobeprinted3d",
+  "version": "1.0.0",
+  "description": "Hello There",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.fdmci.hva.nl/ad-software-development-2223/semester-1-101/tbd/frontend_tobeprinted3d.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

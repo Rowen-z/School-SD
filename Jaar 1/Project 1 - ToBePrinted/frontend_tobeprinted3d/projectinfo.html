@@ -1,0 +1,117 @@
+<!--Author: Rowen Zaal & Sven Molenaar -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Be Printed</title>
+    <link rel="icon" type="image/x-icon" href="/frontend_tobeprinted3d\assets\logo_TBD.png">
+    <link rel="stylesheet" href="./style/layout.css" />
+    <script src="./dist/defaultContent.js" type="module" defer></script>
+    <script src="./dist/projectInfo.js" defer></script>
+    <script src="./dist/donators.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <section class="campaignInfo">
+            <img id="projectImage" src="assets/placeholder.jpg">
+            <section class="projectInfo">
+                <section>
+                    <h2 id="projectError"></h2>
+                </section>
+                <section class="projectTitle">
+                    <h2 id="projectTitle"></h2>
+                </section>
+                <section class="projectStats">
+                    <p id="projectAuthor1"></p>
+                    <p id="projectViews"></p>
+                    <p id="projectDonators"></p>
+                </section>
+                <section class="timeLeft">
+                    <p id="timeLeft">Time left</p>
+                </section>
+                <section class="projectTimer">
+                    <p id="projectTimer"></p>
+                </section>
+                <section class="projectGoal">
+                    <p id="projectRaised">€20</p>
+                    <progress id="projectProgress"></progress>
+                    <p id="projectGoal">€100</p>
+                </section>
+                <section class="projectDonate">
+                    <section id="messageOutput"></section>
+                    <input type="number" id="numberTest" placeholder="Enter an amount in €..." required>
+                    <button id="buttonTest">Donate</button>
+                </section>
+            </section>
+        </section>
+
+        <section class="parentSection">
+            <section class="leftSection">
+                <section class="buttonSection">
+                    <button>Description</button>
+                    <button>Comments</button>
+                </section>
+                <section class="campaignDesc">
+                    <h3 id="projectAuthor2"></h3>
+                    <p id="campaignDescription">
+
+                    </p>
+                    <h3></h3>
+                    <p>
+
+                    </p>
+                </section>
+            </section>
+            <section class="rightSection">
+                <section class="firstSection">
+                    <section class="topDonators">
+                        <h3>Top donators</h3>
+                        <section class="rankNameUser">
+                            <section id="rank">
+                                <h4>Rank</h4>
+                                <section id="rankOutput"></section>
+                            </section>
+                            <section id="name">
+                                <h4>Name</h4>
+                                <section id="nameOutput"></section>
+                            </section>
+                            <section id="amount">
+                                <h4>Amount</h4>
+                                <section id="amountOutput"></section>
+                            </section>
+                        </section>
+                    </section>
+                    <section class="donateNow">
+                        <h3>Donate here:</h3>
+                        <section id="messageOutput"></section>
+                        <input type="number" id="numberTest" placeholder="Enter an amount in €..." required>
+                        <button id="buttonTest">Donate</button>
+                    </section>
+                </section>
+
+                <section class="recentDonators">
+                    <h3>Recent donators</h3>
+                    <section class="rankNameUser">
+                        <section id="name">
+                            <h4>Name</h4>
+                            <section id="nameOutput"></section>
+                        </section>
+                        <section id="amount">
+                            <h4>Amount</h4>
+                            <section id="amountOutput"></section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+    </main>
+
+    <footer></footer>
+</body>
+
+</html>

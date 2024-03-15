@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Be Printed</title>
+    <link rel="icon" type="image/x-icon" href="/frontend_tobeprinted3d\assets\logo_TBD.png">
+    <link rel="stylesheet" href="./style/layout.css" />
+    <script src="./dist/defaultContent.js" type="module" defer></script>
+    <script src="./dist/contactform.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+
+    <main class="center">
+        <h1>Contact Us!</h1>
+        <p>Before you send an contactform, please check out the FAQ page first, <br>
+            Perhaps your question has already been answered.
+        </p>
+        <a href="faq.html">Click here to navigate to the FAQ page</a>
+        <section id="contactSection">
+            <form id="contactForm" class="formSections">
+                <label for="contactName">Your Name:</label>
+                <input type="text" id="contactName" name="contactName" placeholder="Matt Smith" pattern="^[\p{L} ,.'-]{2.}$" required />
+
+                <label for="contactEmail">E-Mail Adress:</label>
+                <input type="email" id="contactEmail" name="contactEmail" placeholder="example@email.com" required />
+
+                <label for="contactSubject">Subject of question</label>
+                <select id="contactSubject" name="contactSubject" required>
+                    <option value="" disabled selected hidden>Select what the subject of your question is</option>
+                    <option value="account">Account</option>
+                    <option value="projects">Projects</option>
+                    <option value="donating">Donating</option>
+                    <option value="privacy">Privacy</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="message">Your Message:</label>
+                <textarea id="contactMessage" name="message" required></textarea>
+                <p class="noError" id="validationParagraph"></p>
+                <button type="submit" name="submitBtn" id="submitContact" size="10">
+                    Submit
+                </button>
+
+                <button type="reset" id="resetForm">Reset Form</button>
+            </form>
+        </section>
+    </main>
+
+
+    <footer></footer>
+
+</body>
+
+</html>

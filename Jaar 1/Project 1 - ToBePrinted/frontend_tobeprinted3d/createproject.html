@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="/frontend_tobeprinted3d\assets\logo_TBD.png">
+    <link rel="stylesheet" href="./style/layout.css" />
+    <script src="./dist/defaultContent.js" type="module" defer></script>
+    <script src="./dist/createproject.js" defer></script>
+ </head>
+
+<body>
+     <header></header>
+    
+    <main class="center">
+        <h1>Create your Project</h1>
+        <section id="projectSection">
+            <form id="projectForm" class="formSections">
+                <label for="projectname">Project Name</label>
+                <input type="text" id="projectTitle" name="projectname" maxlength="50" minlength="5"
+                    placeholder="What will your project be called?" oninvalid="setCustomValidity('Invalid Characters')"
+                    oninput="setCustomValidity('')" required pattern="^[a-zA-Z1-9].*" />
+
+                <label for="projectGoal">Project Goal</label>
+                <input type="number" id="projectGoal" name="projectGoal" min="0" step="1"
+                    placeholder="What is the goal of your project? (how much in € ?)" required />
+
+                <label for="projectTime">Project Time</label>
+                <input type="number" id="projectTime" name="projectTime" min="0" step="any"
+                    placeholder="How many days do you want your project to last?" required />
+
+                <label for="description">Project Description</label>
+                <textarea id="projectDescription" name="description" placeholder=" What is you project about?"
+                    required></textarea>
+
+                <label for="projectImage">Project Picture - Upload your own image along for the project
+                    (png/gif/jpeg)</label>
+
+                <input type="file" id="projectImage" name="projectImage" accept="image/png, image/gif, image/jpeg"
+                    required />
+
+                <button type="submit" name="submitBtn" id="submitproject" size="10">
+                    Submit
+                </button>
+
+                <button type="reset" id="reset">Reset Form</button>
+            </form>
+        </section>
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
