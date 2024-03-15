@@ -1,0 +1,101 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>1090</x><y>450</y><w>510</w><h>110</h></coordinates><panel_attributes>+RubricController
+--
+-readonly IRubricService _rubricService
+--
++RubricController(IRubricService rubricService)
+--
++Task&lt;IActionResult&gt; CreateRubric(RubricDTO rubricDTO)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>670</y><w>540</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt; 
++IRubricService
+--
++Task&lt;int&gt; CreateRubric(RubricDTO rubricDTO, long userNumber);
+
++Rubric ConvertDtoToTable(RubricDTO rubricDTO, long userNumber);
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1170</x><y>550</y><w>60</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>1350</y><w>470</w><h>100</h></coordinates><panel_attributes>+RubricRepository
+--
+-readonly DataContext _context
+--
++RubricRepository(DataContext context)
+--
++Task&lt;int&gt; SaveRubricInDatabase(Rubric rubric);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>1180</y><w>470</w><h>100</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
++IRubricRepository
+--
++Task&lt;int&gt; SaveRubricInDatabase(Rubric rubric);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1170</x><y>1010</y><w>60</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>280</y><w>1220</w><h>320</h></coordinates><panel_attributes>lt=.
+Controller
+fg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>600</y><w>1220</w><h>530</h></coordinates><panel_attributes>lt=.
+Service
+fg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>1130</y><w>1220</w><h>710</h></coordinates><panel_attributes>lt=.
+Repository
+fg=red
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1330</x><y>1310</y><w>40</w><h>30</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1320</x><y>1270</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLNote</id><coordinates><x>870</x><y>230</y><w>170</w><h>30</h></coordinates><panel_attributes>Author: Rowen Zaal
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>880</y><w>540</w><h>140</h></coordinates><panel_attributes>+RubricService
+--
+-readonly IRubricRepository _rubricRepository
+--
++RubricService(IRubricRepository rubricRepository)
+--
++Task&lt;int&gt; CreateRubric(RubricDTO rubricDTO, long userNumber)
++Rubric ConvertDtoToTable(RubricDTO rubricDTO, long userNumber)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1350</x><y>750</y><w>30</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Text</id><coordinates><x>1370</x><y>810</y><w>40</w><h>20</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>950</x><y>320</y><w>300</w><h>80</h></coordinates><panel_attributes>+RubricDTO
+--
++string Title
++int Year
++List&lt;ColumnDTO&gt;? Columns</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1340</x><y>320</y><w>310</w><h>80</h></coordinates><panel_attributes>+ColumnDTO
+--
++string Title
++int Position
++List&lt;CellDTO&gt;? Cells</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1740</x><y>320</y><w>310</w><h>80</h></coordinates><panel_attributes>+CellDTO
+--
++string Content
++int Position</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>390</y><w>100</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;120;80;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>360</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>1270</x><y>380</y><w>40</w><h>30</h></coordinates><panel_attributes>Has-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1660</x><y>380</y><w>40</w><h>30</h></coordinates><panel_attributes>Has-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1640</x><y>360</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1520</x><y>1630</y><w>230</w><h>120</h></coordinates><panel_attributes>+Column
+--
++int Id
++string Title
++int Position
++List&lt;CellDTO&gt;? Cells</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1210</x><y>1630</y><w>230</w><h>120</h></coordinates><panel_attributes>+Rubric
+--
++int Id
++string Title
++int Year
++long UserNumber
++List&lt;ColumnDTO&gt;? Columns
++User? User</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1820</x><y>1630</y><w>230</w><h>120</h></coordinates><panel_attributes>+Cell
+--
++int Id
++string Content
++int Position</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>1630</y><w>230</w><h>140</h></coordinates><panel_attributes>+User
+--
++long Number
++string FirstName
++string? Prefix
++string LastName
++string Password
++string Email
++string Role</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1320</x><y>1440</y><w>60</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1120</x><y>1660</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Text</id><coordinates><x>1150</x><y>1690</y><w>40</w><h>30</h></coordinates><panel_attributes>Has-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1430</x><y>1650</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>1460</x><y>1680</y><w>40</w><h>30</h></coordinates><panel_attributes>Has-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1740</x><y>1650</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>1760</x><y>1680</y><w>40</w><h>30</h></coordinates><panel_attributes>Has-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1260</x><y>1520</y><w>140</w><h>30</h></coordinates><panel_attributes>+DataContext
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1320</x><y>1540</y><w>60</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLNote</id><coordinates><x>60</x><y>290</y><w>300</w><h>100</h></coordinates><panel_attributes>Repository Pattern:
+In de RubricRepository wordt gebruik gemaakt van 
+een public class DataContext. Deze class zorgt 
+ervoor dat Entity Framework weet hoe de  tabbellen 
+in de database eruit komen te zien. De tabellen
+worden in de repository aangeroepen.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1240</x><y>130</y><w>270</w><h>70</h></coordinates><panel_attributes>DTO (Data Transfer Object) Pattern:
+De RubricController ontvangt een DTO als 
+request. Dit wordt gebruikt om gegevens 
+tussen de lagen van de applicatie te versturen.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>50</x><y>170</y><w>290</w><h>90</h></coordinates><panel_attributes>Dependency Injection (DI) Pattern:
+In de constructors worden verschillende classes 
+geïnjecteerd. Dit zorgt ervoor dat deze classes 
+gemakkelijk kunnen worden gebruikt in een class 
+waar je ze wil gebruiken.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>

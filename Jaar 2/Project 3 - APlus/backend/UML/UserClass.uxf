@@ -1,0 +1,120 @@
+<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>525</x><y>195</y><w>255</w><h>55</h></coordinates><panel_attributes>+UserController
+--
+-readonly IUserService _userService
+--
++UserController(IUserService userService)
+--
++Task&lt;IActionResult&gt; Login(LoginDTO request)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>300</y><w>345</w><h>50</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt; 
++IUserService
+--
++Task&lt;string&gt; Login(string email, string password);
++List&lt;Claim&gt; CreateClaimsList(long userNumber, string userRole);
++Task&lt;string&gt; CreateJsonWebToken(UserAuthenticatorModel userAuthenticator, List&lt;Claim&gt; claims, long userNumber);
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>565</x><y>245</y><w>30</w><h>65</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>525</x><y>645</y><w>285</w><h>50</h></coordinates><panel_attributes>+UserRepository
+--
+-readonly DataContext _context
+--
++UserRepository(DataContext context)
+--
++async Task&lt;User&gt; GetUserByEmail(string email)
++async Task&lt;Token&gt; SaveTokenToDatabase(string JsonWebToken, long number, DateTime expires)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>525</x><y>560</y><w>270</w><h>50</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
++IUserRepository
+--
++Task&lt;User&gt; GetUserByEmail(string email);
++Task&lt;Token&gt; SaveTokenToDatabase(string JsonWebToken, long number, DateTime expires);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>565</x><y>500</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>415</x><y>110</y><w>610</w><h>160</h></coordinates><panel_attributes>lt=.
+Controller
+fg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>415</x><y>270</y><w>610</w><h>265</h></coordinates><panel_attributes>lt=.
+Business
+fg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>415</x><y>535</y><w>610</w><h>355</h></coordinates><panel_attributes>lt=.
+Repository
+fg=red
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>645</x><y>625</y><w>20</w><h>15</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>605</y><w>15</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLNote</id><coordinates><x>415</x><y>85</y><w>85</w><h>15</h></coordinates><panel_attributes>Author: Rowen Zaal
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>430</y><w>360</w><h>75</h></coordinates><panel_attributes>+UserService
+--
+-readonly IUserRepository _userRepository
+-readonly IConfiguration _configuration
+--
++UserService(IUserRepository userRepository, IConfiguration configuration)
+--
++async Task&lt;string&gt; Login(string email, string password)
++List&lt;Claim&gt; CreateClaimsList(long userNumber, string userRole)
++async Task&lt;string&gt; CreateJsonWebToken(UserAuthenticatorModel userAuthenticator, List&lt;Claim&gt; claims, long userNumber)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>595</x><y>345</y><w>15</w><h>95</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>Text</id><coordinates><x>625</x><y>390</y><w>20</w><h>10</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>525</x><y>130</y><w>150</w><h>40</h></coordinates><panel_attributes>+LoginDTO
+--
++string Email
++string Password</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>145</y><w>65</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>110;10;10;10;10;160;110;160</additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>785</y><w>115</w><h>70</h></coordinates><panel_attributes>+User
+--
++long Number
++string FirstName
++string? Prefix
++string LastName
++string Password
++string Email
++string Role</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>690</y><w>30</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>730</y><w>70</w><h>15</h></coordinates><panel_attributes>+DataContext
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>740</y><w>30</w><h>55</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLNote</id><coordinates><x>10</x><y>340</y><w>150</w><h>50</h></coordinates><panel_attributes>Repository Pattern:
+In de RubricRepository wordt gebruik gemaakt van 
+een public class DataContext. Deze class zorgt 
+ervoor dat Entity Framework weet hoe de  tabbellen 
+in de database eruit komen te zien. De tabellen
+worden in de repository aangeroepen.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>195</x><y>165</y><w>135</w><h>35</h></coordinates><panel_attributes>DTO (Data Transfer Object) Pattern:
+De RubricController ontvangt een DTO als 
+request. Dit wordt gebruikt om gegevens 
+tussen de lagen van de applicatie te versturen.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>0</x><y>255</y><w>145</w><h>45</h></coordinates><panel_attributes>Dependency Injection (DI) Pattern:
+In de constructors worden verschillende classes 
+geïnjecteerd. Dit zorgt ervoor dat deze classes 
+gemakkelijk kunnen worden gebruikt in een class 
+waar je ze wil gebruiken.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>805</x><y>430</y><w>210</w><h>90</h></coordinates><panel_attributes>+UserAuthenticatorModel
+--
+-EmailModel Email
+-PasswordModel Password
+--
++UserAuthenticatorModel(EmailModel email, PasswordModel password)
+--
++EmailModel GetEmail()
++PasswordModel GetPassword()
++void ValidateCredentials()
++string GenerateJsonWebToken(string tokenValue, 
+List&lt;Claim&gt; claims, DateTime expires)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>715</x><y>360</y><w>90</w><h>60</h></coordinates><panel_attributes>+EmailModel
+--
+-string Email
+--
++EmailModel(string email)
+--
++string GetEmail()
++void Validate()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>290</y><w>175</w><h>90</h></coordinates><panel_attributes>+PasswordModel
+--
+-string Password
+-string HashedPassword
+-string Regex
+--
++PasswordModel(string password, bool isHashedPassword)
+--
++string GetPassword()
++string GetHashedPassword()
++void Validate()
++void ValidateIdenticalPassword(string hashedPassword)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>755</x><y>500</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>100;30;10;30;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>390</y><w>80</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;20;140;20;140;80</additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>375</y><w>30</w><h>65</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element></diagram>

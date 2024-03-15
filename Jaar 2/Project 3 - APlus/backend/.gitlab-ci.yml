@@ -1,0 +1,22 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+before_script:
+  - cd ./APlus
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - dotnet build
+  tags:
+    - hva
+
+test:
+  stage: test
+  script:
+    - dotnet test
+  tags:
+    - hva
