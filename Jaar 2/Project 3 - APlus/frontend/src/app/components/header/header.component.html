@@ -1,0 +1,24 @@
+<!--
+@author Bruce Bodaar
+@author Jacky Schoen
+@author Rowen Zaal
+-->
+<header class="teacher">
+    <nav>
+        <section id="nav-left">
+            <img routerLink="home" src="../../../assets/APlusLogoTransparent.png" />
+            <a routerLink="login">Inloggen</a>
+            <a routerLink="home">Home</a>
+            <a routerLink="rubric">Rubric</a>
+        </section>
+        <section id="nav-right">
+            <a id="nl" class="enabled">NL</a>
+            <a id="en" class="disabled">EN</a>
+            <img (click)="toggleDropdown()" src="../../../assets/ProfileIcon.png" />
+        </section>
+        <section id="dropdown" [class.hidden]="isHidden">
+            <a routerLink="#">Profiel</a>
+            <a routerLink="#">Uitloggen</a>
+        </section>
+    </nav>
+</header>

@@ -1,0 +1,50 @@
+<h1>Maak Rubric</h1>
+<form id="rubricForm" [formGroup]="rubricForm" (ngSubmit)="onSubmit()">
+
+    <!-- Title input -->
+    <section id="title-section">
+        <label for="title-input"><h4 id="title-header">Rubric titel</h4></label>
+        <input
+        type="text"
+        id="title-input"
+        formControlName="title"
+        class="form-control"
+        />
+        <p class="invalid-message title" *ngIf="rubricForm.get('title')?.invalid && rubricForm.get('title')?.touched">Titel moet een lengte hebben van 2 tot en met 31 karakters.</p>
+    </section>
+
+    <!-- Year selection -->
+    <section id="year-section">
+        <h4 id="year-header">Leerjaar</h4>
+        <section id="year-selection">
+            <section *ngFor="let year of years">
+                <input type="radio" [value]="year" formControlName="year" class="year-radio" />
+                <label>Leerjaar {{year}}</label>
+            </section>
+        </section>
+    </section>
+
+    <!-- Rubric input -->
+    <section id="table-section">
+        <table id="rubric-table">
+            <thead>
+                <tr [formGroupName]="'columnTitles'">
+                    <th *ngFor="let key of getColumnTitleKeys; let i = index">
+                        <input type="text" class="column-title-input" [formControlName]="'columnTitle'+i" />
+                    </th>  
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container formGroupName="tableRows" *ngFor="let key of getRowKeys; let i = index">
+                    <tr [formGroupName]="'row'+(i+1)">
+                        <td  *ngFor="let key of getColumnTitleKeys; let i = index">
+                            <textarea class="form-control" [formControlName]="'cell'+i"></textarea>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </section>
+    <p class="invalid-message column-titles" *ngIf="rubricForm.get('columnTitles')?.invalid && rubricForm.get('columnTitles')?.touched">Kolom titels mogen niet langer zijn dan 127 karakters.</p>
+    <p class="invalid-message cells" *ngIf="rubricForm.get('tableRows')?.invalid">Cellen mogen niet meer dan 511 karakters bevatten.</p>
+</form>

@@ -1,0 +1,45 @@
+<!--
+@author Rowen Zaal
+-->
+<form id="login-form" [formGroup]="loginForm">
+    <h2 id="login-heading">Inloggen</h2>
+    <section id="email-field">
+        <input 
+            class="login-form-field" 
+            formControlName="email" 
+            placeholder="Email" 
+            required
+            [ngClass]="{'invalid-input': loginForm.get('email')?.hasError('pattern') && loginForm.get('email')?.touched}"
+            [ngClass]="{'invalid-input': loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched}"
+        >
+        <p *ngIf="loginForm.get('email')?.hasError('pattern') && loginForm.get('email')?.touched" class="login-error">
+            Voer een geldig Emailadres in
+        </p>
+        <p *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched" class="login-error">
+            Voer een geldig Emailadres in
+        </p>
+    </section>
+    <section id="password-field">
+        <input 
+            class="login-form-field" 
+            formControlName="password" 
+            type="password" 
+            placeholder="Wachtwoord" 
+            [type]="[passwordVisible ? 'text' : 'password']" 
+            required
+            [ngClass]="{'invalid-input': loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched}"
+        >
+        <i 
+            class="far fa-eye"  
+            [ngClass]="[passwordVisible ? 'far fa-eye-slash' : 'far fa-eye']" 
+            (click)="togglePassword()">
+        </i>
+        <p *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched" class="login-error">
+            Dit veld is verplicht.
+        </p>
+    </section>
+    <section>
+        <button id="login-button" [disabled]="loginForm.invalid" (click)="login()">Login</button>
+    </section>
+    <p *ngIf="showError" id="error-message">{{ errorMessage }}</p>
+</form>

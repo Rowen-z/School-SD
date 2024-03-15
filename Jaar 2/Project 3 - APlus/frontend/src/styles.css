@@ -1,0 +1,60 @@
+/**
+* Global styling
+*/
+* {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1.3rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    background: #400045;
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+}
+
+button:hover {
+    background: #6B3670;
+    cursor: pointer;
+}
+
+button:active {
+    background: #36003a
+}
+
+.container {
+    margin: 1rem;
+}

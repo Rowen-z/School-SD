@@ -1,0 +1,13 @@
+stages:
+    - test
+
+test:
+    image: node:16-alpine
+    tags:
+        - hva
+    stage: test
+    script:
+        - npm install
+        - apk --no-cache add chromium
+        - export CHROME_BIN=/usr/bin/chromium
+        - npm run test -- --browsers=ChromeHeadlessNoSandbox

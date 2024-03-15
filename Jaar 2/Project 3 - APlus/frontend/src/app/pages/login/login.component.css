@@ -1,0 +1,55 @@
+/* 
+@author Rowen Zaal 
+*/
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-gap: 3rem;
+}
+
+#login-heading {
+    margin-bottom: 0;
+}
+
+.login-form-field {
+    width: 15rem;
+    padding: 0.6rem;
+    border: 1px solid #c3c3c3;
+}
+
+#email-field, #password-field {
+    position: relative;
+}
+
+.login-error {
+    position: absolute;
+    left: 17rem;
+    top: -0.4rem;
+    width: max-content;
+    font-size: 1rem;
+    color: red;
+}
+
+.invalid-input {
+    border: 1px solid red;
+}
+
+#login-button {
+    background: linear-gradient(to right, #3D0042, #5E81DD);
+    width: 13rem;
+}
+
+#error-message {
+    background: #3D0042;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+}
+
+.fa-eye, .fa-eye-slash {
+    position: absolute; 
+    right: 0.5rem; 
+    top: 0.6rem; 
+    cursor: pointer
+}

@@ -1,0 +1,96 @@
+/**
+* Header styling
+*/
+.login {
+    background: linear-gradient(to right, #3D0042, #5E81DD);
+    filter: drop-shadow(#000 0rem 0.1rem 0.5rem);
+}
+
+.student {
+    background: #5E81DD;
+    filter: drop-shadow(#000 0rem 0.1rem 0.5rem);
+}
+
+.teacher {
+    background: #400045;
+    filter: drop-shadow(#000 0rem 0.1rem 0.5rem);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    color: white;
+    height: inherit;
+    padding: 0rem 1rem;
+    font-weight: bold;
+}
+
+nav img {
+    padding: 0.5rem 1rem;
+}
+
+nav a:hover, nav img:hover {
+    cursor: pointer;
+    background: #6B3670;
+}
+
+#nav-left, #nav-right {
+    display: flex;
+    height: inherit;
+}
+
+#nav-right {
+    align-items: center;
+}
+
+#nav-right img {
+    width: 3rem;
+}
+
+#nl, #en {
+    height: 0;
+    padding: 0.25rem;
+}
+
+#nl:hover, #en:hover {
+    background: none;
+    cursor: pointer;
+}
+
+#dropdown {
+    position: absolute;
+    right: 0;
+    top: 4rem;
+}
+
+#dropdown a {
+    background: #400045;
+    padding: 1rem;
+}
+
+#dropdown a:hover {
+    background: #6B3670;
+}
+
+/**
+* Enabled & disabled styling
+*/
+.enabled {
+    font-weight: bolder;
+}
+
+.disabled {
+    font-weight: lighter;
+    opacity: 0.5;
+}
+
+.hidden {
+    display: none;
+}
