@@ -11,7 +11,7 @@ namespace APlus.Business.DTOs
     */
     public class RubricDTO
     {
-        [Required(ErrorMessage = "Invalid rubric title"), StringLength(31, MinimumLength = 2, ErrorMessage = "Invalid rubric title")]
+        [Required, StringLength(31, MinimumLength = 2, ErrorMessage = "Invalid rubric title")]
         public string Title { get; set; } = string.Empty;
         
         [Range(1, 2, ErrorMessage = "Invalid year")]

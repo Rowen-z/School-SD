@@ -11,10 +11,10 @@ namespace APlus.Business.DTOs
     */
     public class ColumnDTO
     {
-        [Required(AllowEmptyStrings = true, ErrorMessage = "Invalid column title"), StringLength(127, ErrorMessage = "Invalid column title")]
+        [Required(AllowEmptyStrings = true), StringLength(127, ErrorMessage = "Invalid column title")]
         public string Title { get; set; } = string.Empty;
 
-        [Range(0, 99, ErrorMessage = "Invalid column position")]
+        [Range(1, 99, ErrorMessage = "Invalid column position")]
         public int Position { get; set; }
         public List<CellDTO>? Cells { get; set; }
     }

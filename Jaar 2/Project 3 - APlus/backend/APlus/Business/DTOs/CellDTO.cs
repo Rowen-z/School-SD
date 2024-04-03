@@ -10,7 +10,7 @@ namespace APlus.Business.DTOs
     */
     public class CellDTO
     {
-        [Required(AllowEmptyStrings = true, ErrorMessage = "Invalid cell content"), StringLength(511, ErrorMessage = "Invalid cell content")]
+        [Required(AllowEmptyStrings = true), StringLength(511, ErrorMessage = "Invalid cell content")]
         public string Content { get; set; } = string.Empty;
 
         [Range(1, 99, ErrorMessage = "Invalid cell position")]

@@ -6,8 +6,7 @@
     */
     public interface IRubricService
     {
-        Task<int> CreateRubric(RubricDTO rubricDTO, long userNumber);
-
-        Rubric ConvertDtoToTable(RubricDTO rubricDTO, long userNumber);
+        Task CreateRubric(RubricDTO rubricDTO, long userNumber);
+        Task UpdateRubric(RubricDTO rubricDTO, int rubricId);
     }
 }

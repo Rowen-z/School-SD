@@ -18,45 +18,96 @@ namespace APlus.Business.RubricService
 
         /**
          * @author Rowen Zaal
-         * Converts the RubricDTO to a Rubric Table and awaits the RubricRepository to save it in the database.
-         * @param rubricDTO is the RubricDTO model containing all properties of a rubric.
-         * @param userNumber is the userNumber as a string of an authorized user that sent the request.
+         * Converts the RubricDTO to a rubric table class and awaits the RubricRepository to save the rubric in the database.
+         * @param rubricDTO is the RubricDTO model containing all properties from the request.
+         * @param userNumber is the userNumber of an authorized user that sent the request.
          * @returns an integer of database changes to the RubricController.
         */
-        public async Task<int> CreateRubric(RubricDTO rubricDTO, long userNumber)
+        public async Task CreateRubric(RubricDTO rubricDTO, long userNumber)
         {
-            Rubric rubric = ConvertDtoToTable(rubricDTO, userNumber);
+            RubricModel rubricModel = new(rubricDTO, userNumber);
+            Rubric rubric = rubricModel.ConvertDtoToDataModel();
 
-            return await _rubricRepository.SaveRubricInDatabase(rubric);
+            await _rubricRepository.AddRubricInDatabase(rubric);
         }
 
         /**
          * @author Rowen Zaal
-         * Converts the RubricDTO to a Rubric Table.
-         * @param rubricDTO is the RubricDTO model containing all properties of a rubric.
-         * @param userNumber is the userNumber as a long of an authorized user that sent the request.
-         * @returns a Rubric table class with the properties from the request.
+         * Converts the RubricDTO to rubric table class, get's the existing rubric with a rubricId. 
+         * Existing rubric get's updated with the updated properties, if the rubric got columns, each column goes to UpdateColumns().
+         * @param rubricDTO is a RubricDTO object with the updated properties.
+         * @param rubricId is the ID of the rubric to update.
         */
-        public Rubric ConvertDtoToTable(RubricDTO rubricDTO, long userNumber)
+        public async Task UpdateRubric(RubricDTO rubricDTO, int rubricId)
         {
-            Rubric rubric = new()
-            {
-                Title = rubricDTO.Title,
-                Year = rubricDTO.Year,
-                UserNumber = userNumber,
-                Columns = rubricDTO.Columns?.Select(columnDTO => new Column
-                {
-                    Title = columnDTO.Title,
-                    Position = columnDTO.Position,
-                    Cells = columnDTO.Cells?.Select(cellDTO => new Cell
-                    {
-                        Content = cellDTO.Content,
-                        Position = cellDTO.Position
-                    }).ToList()
-                }).ToList()
-            };
+            RubricModel rubricModel = new(rubricDTO);
+            Rubric rubric = rubricModel.ConvertDtoToDataModel();
 
-            return rubric;
+            Rubric existingRubric = _rubricRepository.GetExistingRubric(rubricId);
+
+            if (rubric.Columns != null)
+            {
+                foreach (Column column in rubric.Columns)
+                {
+                    await UpdateColumns(existingRubric, column);
+                }
+            }
+
+            await _rubricRepository.UpdateExistingRubric(existingRubric, rubric);
+        }
+
+        /**
+         * @author Rowen Zaal
+         * Updates an existing column in the database based on the provided column and the existing column in the rubric.
+         * If a column has a new position number, it get's added to the existing rubric.
+         * @param existingRubric is the Rubric table class with the existing rubric properties.
+         * @param column is a Column table class with the updated properties.
+        */
+        private async Task UpdateColumns(Rubric existingRubric, Column column)
+        {
+            ColumnModel columnModel = new(existingRubric, column);
+            Column? existingColumn = columnModel.GetExistingColumn();
+
+            if (existingColumn != null)
+            {
+                await _rubricRepository.UpdateExistingColumn(existingColumn, column);
+
+                if (column.Cells != null)
+                {
+                    foreach (Cell cell in column.Cells)
+                    {
+                        await UpdateCells(existingColumn, cell);
+                    }
+                }
+            }
+            else
+            {
+                columnModel.MakeNewListOfColumn();
+                await _rubricRepository.AddColumnToExistingRubric(columnModel.GetExistingRubric(), column);
+            }
+        }
+
+        /**
+         * @author Rowen Zaal
+         * Updates an existing cell in the database based on the provided cell and the existing cell in the column.
+         * If a cell has a new position number, it get's added to the existing column.
+         * @param existingColumn is the Column table class with the existing column properties.
+         * @param cell is a Cell table class with the updated properties.
+        */
+        private async Task UpdateCells(Column existingColumn, Cell cell)
+        {
+            CellModel cellModel = new(existingColumn, cell);
+            Cell? existingCell = cellModel.GetExistingCell();
+
+            if (existingCell != null)
+            {
+                await _rubricRepository.UpdateExistingCell(existingCell, cell);
+            }
+            else
+            {
+                cellModel.MakeNewListOfCell();
+                await _rubricRepository.AddCellToExistingColumn(cellModel.GetExistingColumn(), cell);
+            }
         }
     }
 }

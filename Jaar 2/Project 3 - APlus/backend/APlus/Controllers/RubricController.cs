@@ -36,5 +36,27 @@ namespace APlus.Controllers
 
             return Ok(new { message = "Rubric creation successful" });
         }
+
+        /**
+         * @author Rowen Zaal
+         * A HttpPut request used for editing an existing rubric. Only the roles ADMIN & TEACHER can acces this request.
+         * @param rubricDTO contains the properties defined in the RubricDTO model.
+         * @returns status200("Rubric updated successfully") if no errors occured during the proces.
+         * @returns status400 "Rubric not found" if InvalidOperationException got thrown.
+        */
+        [HttpPut, Authorize(Roles = "ADMIN, TEACHER")]
+        public async Task<IActionResult> UpdateRubric(RubricDTO rubricDTO, int rubricId)
+        {
+            try
+            {
+                await _rubricService.UpdateRubric(rubricDTO, rubricId);
+
+                return Ok(new { message = "Rubric updated succesfully" });
+            }
+            catch (InvalidOperationException invalidOperationException)
+            {
+                return BadRequest(invalidOperationException.Message);
+            }   
+        }
     }
 }
